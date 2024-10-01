@@ -1,5 +1,5 @@
 ﻿use Northwind
---Cau 1 Sắp xếp sản phẩm tăng dần theo UnitPrice, 
+--Sắp xếp sản phẩm tăng dần theo UnitPrice, 
 --và tìm 20% dòng có UnitPrice cao nhất 
 
 SELECT *
@@ -16,7 +16,7 @@ FROM products_ranked
 WHERE row_num >= total_rows * 0.2;
 
 
---Câu 2 Với mỗi hóa đơn, xuất danh sách các sản phẩm, số lượng (Quantity) 
+--Với mỗi hóa đơn, xuất danh sách các sản phẩm, số lượng (Quantity) 
 --và số phần trăm của sản phẩm đó trong hóa đơn. 
 
 
@@ -27,7 +27,7 @@ Inner JOIN Product ON Product.Id= OrderItem.ProductID
 ORDER BY OrderId
 
 
---Câu 3 
+--
 IF exists (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME= N'QuocGia')
 begin 
 DROP TABLE QuocGia
@@ -54,7 +54,7 @@ PIVOT
 (COUNT(country) FOR Country IN ([USA], [UK], [France], [Germany], [Others])) AS PivotTable
 
 
---cau 3 cach 2
+--
 SELECT Id,CompanyName,City,
  ISNULL([USA], 0) AS [USA], 
  ISNULL([UK], 0) AS [UK], 
@@ -70,7 +70,7 @@ PIVOT
 
 
 
---Cau 4 Xuất danh sách các hóa đơn gồm OrderNumber, OrderDate (format: dd mm yyyy), 
+-- Xuất danh sách các hóa đơn gồm OrderNumber, OrderDate (format: dd mm yyyy), 
 
 
 SELECT OrderNumber,
@@ -83,7 +83,7 @@ Amount=LTRIM(STR(CAST(O.TotalAmount as decimal(10,0)),10,0)+'éuro')
 from[Order] O
 inner join Customer As C on O.CustomerId=C.Id
 
---Cau 5 Xuất danh sách các sản phẩm dưới dạng đóng gói bags.
+-- Xuất danh sách các sản phẩm dưới dạng đóng gói bags.
 
 
 select Id,ProductName,SupplierId,UnitPrice,
@@ -92,7 +92,7 @@ from Product
 where Package like '%bags'
 
 
---Câu 6
+--
 --Xuất danh sách các khách hàng theo tổng số hóa đơn mà khách hàng đó có, 
 --sắp xếp theo thứ tự giảm dần của tổng số hóa đơn, 
 --kèm theo đó là  các thông tin phân hạng DENSE_RANK và nhóm (chia thành 3 nhóm)
