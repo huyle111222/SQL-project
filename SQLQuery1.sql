@@ -11,7 +11,7 @@ on S.Id=P.SupplierId
 group by S.Id,S.CompanyName,S.City,S.Country,S.Phone,P.SupplierId
 order by P.SupplierId 
 
--- Cũng câu trên nhưng chỉ xuất danh sách nhà cung cấp có sự khác biệt giá (max – min) 
+-- chỉ xuất danh sách nhà cung cấp có sự khác biệt giá (max – min) 
 --không quá lớn (<=30).
 
 select S.Id,S.CompanyName,S.City,S.Country,S.Phone,P.SupplierId,
